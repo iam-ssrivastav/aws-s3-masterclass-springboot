@@ -1,0 +1,277 @@
+{
+    "info": {
+        "_postman_id": "s3-masterclass-collection",
+        "name": "AWS S3 Masterclass",
+        "description": "Endpoints for Spring Boot AWS S3 Interview Preparation Project",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Bucket Operations",
+            "item": [
+                {
+                    "name": "Create Bucket",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/s3/buckets/interview-bucket",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "s3",
+                                "buckets",
+                                "interview-bucket"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List Buckets",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/s3/buckets",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "s3",
+                                "buckets"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Object Operations",
+            "item": [
+                {
+                    "name": "Upload Object",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "key",
+                                    "value": "test-file.txt",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "file",
+                                    "type": "file",
+                                    "src": []
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/s3/upload",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "s3",
+                                "upload"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Download Object",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/s3/download/test-file.txt",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "s3",
+                                "download",
+                                "test-file.txt"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List Objects",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/s3/objects",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "s3",
+                                "objects"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Advanced Features",
+            "item": [
+                {
+                    "name": "Presigned Download URL",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/s3/presigned-download/test-file.txt",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "s3",
+                                "presigned-download",
+                                "test-file.txt"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Presigned Upload URL",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/s3/presigned-upload/new-upload.txt",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "s3",
+                                "presigned-upload",
+                                "new-upload.txt"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Enable Versioning",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/s3/versioning/interview-bucket",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "s3",
+                                "versioning",
+                                "interview-bucket"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List Versions",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/s3/versions/test-file.txt",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "s3",
+                                "versions",
+                                "test-file.txt"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Multipart Upload (Large Files)",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "key",
+                                    "value": "large-file.zip",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "file",
+                                    "type": "file",
+                                    "src": []
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/s3/multipart",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "s3",
+                                "multipart"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Set Lifecycle Policy",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/s3/lifecycle/interview-bucket",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "s3",
+                                "lifecycle",
+                                "interview-bucket"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8080"
+        }
+    ]
+}

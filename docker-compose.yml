@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  localstack:
+    image: localstack/localstack:latest
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3
+      - DEBUG=1
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  s3-app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - AWS_ACCESSKEYID=test
+      - AWS_SECRETACCESSKEY=test
+      - AWS_REGION=us-east-1
+      - AWS_S3_BUCKET=masterclass-bucket
+      - AWS_S3_ENDPOINT=http://localstack:4566
+    depends_on:
+      - localstack

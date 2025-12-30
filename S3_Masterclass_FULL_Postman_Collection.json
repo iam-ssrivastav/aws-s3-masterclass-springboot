@@ -1,0 +1,197 @@
+{
+    "info": {
+        "_postman_id": "s3-masterclass-collection-v2",
+        "name": "AWS S3 Masterclass (Full)",
+        "description": "Comprehensive endpoints for Spring Boot AWS S3 Interview Preparation",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Bucket Operations",
+            "item": [
+                {
+                    "name": "Create Bucket",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/api/s3/buckets/interview-bucket"
+                    }
+                },
+                {
+                    "name": "List Buckets",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/api/s3/buckets"
+                    }
+                },
+                {
+                    "name": "Delete Bucket",
+                    "request": {
+                        "method": "DELETE",
+                        "url": "{{baseUrl}}/api/s3/buckets/interview-bucket"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Object Operations",
+            "item": [
+                {
+                    "name": "Upload Object",
+                    "request": {
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "key",
+                                    "value": "test.txt",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "file",
+                                    "type": "file",
+                                    "src": []
+                                }
+                            ]
+                        },
+                        "url": "{{baseUrl}}/api/s3/upload"
+                    }
+                },
+                {
+                    "name": "Download Object",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/api/s3/download/test.txt"
+                    }
+                },
+                {
+                    "name": "List Objects",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/api/s3/objects"
+                    }
+                },
+                {
+                    "name": "Delete Object",
+                    "request": {
+                        "method": "DELETE",
+                        "url": "{{baseUrl}}/api/s3/objects/test.txt"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Advanced Features",
+            "item": [
+                {
+                    "name": "Presigned Download URL",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/api/s3/presigned-download/test.txt"
+                    }
+                },
+                {
+                    "name": "Presigned Upload URL",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/api/s3/presigned-upload/new.txt"
+                    }
+                },
+                {
+                    "name": "Enable Versioning",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/api/s3/versioning/interview-bucket"
+                    }
+                },
+                {
+                    "name": "List Versions",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/api/s3/versions/test.txt"
+                    }
+                },
+                {
+                    "name": "Multipart Upload",
+                    "request": {
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "key",
+                                    "value": "large.zip",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "file",
+                                    "type": "file",
+                                    "src": []
+                                }
+                            ]
+                        },
+                        "url": "{{baseUrl}}/api/s3/multipart"
+                    }
+                },
+                {
+                    "name": "Set Lifecycle Policy",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/api/s3/lifecycle/interview-bucket"
+                    }
+                },
+                {
+                    "name": "Upload with Encryption (SSE-S3)",
+                    "request": {
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "key",
+                                    "value": "secret.txt",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "file",
+                                    "type": "file",
+                                    "src": []
+                                }
+                            ]
+                        },
+                        "url": "{{baseUrl}}/api/s3/upload-encrypted"
+                    }
+                },
+                {
+                    "name": "Tag Object",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/s3/tag?key=test.txt&tagKey=environment&tagValue=dev",
+                            "query": [
+                                {
+                                    "key": "key",
+                                    "value": "test.txt"
+                                },
+                                {
+                                    "key": "tagKey",
+                                    "value": "environment"
+                                },
+                                {
+                                    "key": "tagValue",
+                                    "value": "dev"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8080"
+        }
+    ]
+}
