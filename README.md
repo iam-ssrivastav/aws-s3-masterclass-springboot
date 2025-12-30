@@ -54,6 +54,42 @@ graph TD
 
 ---
 
+## 🎓 Interview Deep-Dive: Feature Explanations
+
+### 1. Bucket Operations
+*   **What it is**: Fundamental containers for data.
+*   **Interview Pointer**: Explain **Global Uniqueness**. Bucket names are shared across all AWS accounts globally. Mention **Region Selection**—buckets are region-specific, and data never leaves that region unless replicated.
+
+### 2. Standard Object CRUD
+*   **What it is**: High-level APIs for Put, Get, List, and Delete.
+*   **Interview Pointer**: S3 is **Object Storage**, not a file system. Objects are immutable; "editing" a file actually creates a new object (managed via Versioning).
+
+### 3. Multipart Upload (Critical for Interviews)
+*   **What it is**: Splitting a large file into parts and uploading them independently.
+*   **Interview Pointer**: If an upload fails at 90%, you only retry the failed 5MB part, not the whole 1GB. It improves **Parallelism** and **Throughput**.
+
+### 4. S3 Versioning
+*   **What it is**: Protecting data from accidental overwrites.
+*   **Interview Pointer**: Deleting an object doesn't erase it; it adds a **Delete Marker**. To truly delete, you must delete the specific `VersionId`. Great for compliance.
+
+### 5. Presigned URLs
+*   **What it is**: Time-limited URLs that grant temporary access to private files.
+*   **Interview Pointer**: Security best practice. Instead of making a bucket public, valid for e.g. 10 mins. The signature is generated using your IAM credentials server-side.
+
+### 6. Lifecycle Management
+*   **What it is**: Automating cost savings.
+*   **Interview Pointer**: Move data from **S3 Standard** to **S3 Glacier** after 30 days. Perfect for logs or backups that aren't accessed frequently.
+
+### 7. Server-Side Encryption (SSE-S3)
+*   **What it is**: Data-at-rest encryption.
+*   **Interview Pointer**: I implemented **SSE-S3** (AES-256). AWS S3 manages the keys for you. Essential for "Security in Depth" architecture.
+
+### 8. Object Tagging
+*   **What it is**: Key-Value metadata for objects.
+*   **Interview Pointer**: Used for **Cost Allocation** (billing) and **ABAC** (Attribute-Based Access Control). E.g., "Allow only Finance users to read objects tagged `Dept: Finance`."
+
+---
+
 ## 📚 S3 Interview Concepts (The "Perfect Answer" Guide)
 
 ### 1. What is S3?
